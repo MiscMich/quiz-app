@@ -51,6 +51,7 @@ function startGame() {
    showQuiz();
 
   console.log("Starting game")
+  
   startGameButton.style.display = "none";
   heading.style.display = "none"
   codingQuizHeading.style.display = "none"
