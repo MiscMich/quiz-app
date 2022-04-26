@@ -31,6 +31,8 @@ const questions = [
   },
 ];
 
+ var scoresArray = [];
+  var userInputDiv =  document.getElementById("highscore-initial-input")
 var correctAnswers=0;
 var wrongAnswers=0;
 var questionTitle = document.getElementById("questionTitle");
@@ -71,9 +73,11 @@ function startGame() {
     if (totalTime <= 0) {
       clearInterval(startTimer);
       if (questionIndex < questions.length - 1) {
+        totalTime = 0; // clear
         gameOver()
       }
     }
+     
   }, 1000);
 }
 
@@ -139,12 +143,107 @@ function checkAnswer(event) {
   }
 }
 
-function gameOver(){
+function gameOver(event) {
 
-  timeFull.style.display = "none"
+  totalTime = 1
+  document.getElementById('time').innerHTML = '0'
   questionsDiv.style.display = "none"
   console.log("Game is over, you got this amount of correct answers: " + correctAnswers )
-  codingQuizHeading = "Game Over! "
+  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers
+  userInputDiv.style.display = "block"
+  
+  
+
   
 
 }
+
+
+
+
+function grabHighScore(){
+
+
+    document.getElementById('heading').style.display = "none"
+
+ 
+
+  
+    var userInitials = document.getElementById('user-initials').value;
+    
+    console.log("users value is: " + userInitials);
+
+
+  userInputDiv.style.display = "none"
+  questionsDiv.style.display = "none"
+  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers
+  document.getElementById("highscores-user-list").style.display = "block"
+  //var highscore = localStorage.getItem("highscore");
+  
+
+   var result = {
+    initials: userInitials,
+    score: correctAnswers
+  }
+
+  const savedScores = localStorage.getItem('highscore') || '[]' // get the score, or the initial value if empty
+ 
+  const highscores = [...JSON.parse(savedScores), result] // add the result
+  .sort((a, b) => b.score- a.score) // sort descending
+  .slice(0, 10) // take highest 5
+
+localStorage.setItem('highscore', JSON.stringify(highscores)) // store the scores
+
+console.log(highscores)
+ 
+  
+  
+  console.log(scoresArray)
+
+  for (let i = 0; i < highscores.length; i++) {
+    console.log(highscores[i])
+    var ul = document.getElementById("highscores-user-list")
+    var li = document.createElement("li");
+    li.setAttribute("class", "list-group-item")
+     li.appendChild(document.createTextNode(highscores[i].initials + ".   Score: " +highscores[i].score))
+     ul.appendChild(li);
+  }
+  
+  
+
+}
+
+
+function viewHighscores() {
+ 
+
+
+}
+
+
+
+function viewHighScores () {
+  
+  
+  totalTime = 1
+  document.getElementById('time').innerHTML = '0'
+  questionsDiv.style.display = "none"
+
+  
+  
+
+  
+
+}
+
+function refresh() {    
+  setTimeout(function () {
+      location.reload()
+  }, 100);
+}
+
+document.getElementById("view-highscores").addEventListener("click", grabHighScore)
+document.getElementById("play-again").addEventListener("click", refresh )
+ document.getElementById("submit-initials").addEventListener('click', grabHighScore)
+
+

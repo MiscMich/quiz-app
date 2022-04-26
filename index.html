@@ -29,9 +29,9 @@
       <!--center text-->
       <h1 id="coding-quiz" class="display-4 d-inline-block mt-2">Coding Quiz!</h1>
       <!--Time-->
-     <div id="timeFull" class=" position-relative d-md-inline-flex justify-content-center">
+     <container id="timeFull" class=" position-relative d-md-inline-flex justify-content-center">
       <h3 class="p-0 position-relative d-inline-block text-nowrap mt-3 justify-content-center" id="time-word">Time:&nbsp</h3><h3 id="time" class="me-5 justify-content-center d-inline-flex   text-nowrap mt-3"> 60</h3>
-    </div>
+    </container>
 
     </div>
     </nav>
@@ -57,6 +57,33 @@
             <p id="right-or-wrong"> </p>
         </div>
       </div>
+
+      <!--input div-->
+      <div id="highscore-initial-input" style="display: none">
+        <form name="highscore-initial-form" >
+          <div class="form-group " >
+            <label for="enterYourIntitials">Enter your Initials</label>
+            <input type="name" class="form-control" id="user-initials" placeholder="Enter Initials">
+           
+          </div>
+         
+          <button id="submit-initials" type="button" class="btn btn-secondary mt-2 m-auto ">Submit</button>
+        </form>
+
+       
+     
+
+
+      </div>
+     <!--high scores div-->
+      <div>
+        <ul id="highscores-user-list" style="display: none" class="list-group">
+        
+         <button id="play-again" class="btn btn-primary">Play Again</button>
+       </ul>
+     </div>
+
+
     </container>
 
     </div>
