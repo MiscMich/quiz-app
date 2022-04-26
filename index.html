@@ -19,18 +19,24 @@
    <!--Top bar-->
   <body >
     <nav class="navbar navbar-default navbar-fixed-top navbar-">
+       <div class="container-fluid">
       
    <!--View highscores button-->   
-      <button type="button" id="view-highscores" class="btn btn-primary btn-lg ms-5 mt-3 p-md-2">
+      <button type="button" id="view-highscores" class="btn btn-primary btn-md d-inline-flex">
         View High Scores
       </button>
 
       <!--center text-->
-      <h1 id="coding-quiz" class="display-4 mt-5">Coding Quiz!</h1>
+      <h1 id="coding-quiz" class="display-4 d-inline-block mt-2">Coding Quiz!</h1>
       <!--Time-->
-      <h2 class="me-5 row-cols-1" id="time-word">Time:</h2><h2 id="time" class="me-5 row-cols-1">60</h2>
+     <div class="position-relative d-md-inline-flex justify-content-center">
+      <h3 class="p-0 position-relative d-inline-block text-nowrap mt-3 justify-content-center" id="time-word">Time:&nbsp</h3><h3 id="time" class="me-5 justify-content-center d-inline-flex   text-nowrap mt-3"> 60</h3>
+    </div>
+
+    </div>
     </nav>
 
+    <container class="m-5" >
     <div class="container-sm p-5 mt-3 justify-center mt-xl-5" id="main">
       <h4 id="heading" class="text-center text-black  ">Try to answer the following questions during the alloted time limit! Give it your best shot!</h4>
       <div class="col text-center">
@@ -49,6 +55,7 @@
             <p id="answerCheck" style="display: none;"></p>
         </div>
       </div>
+    </container>
 
     </div>
 
