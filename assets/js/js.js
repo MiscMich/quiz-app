@@ -2,7 +2,7 @@ const questions = [
   {
     question: "Arrays in Javascript can be used to store?",
     choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
-    answer: "1. Other Arrays",
+    answer: "1. Other arrays",
   },
   {
     question: "A very useful tool for planning and debugging your code is ____",
@@ -15,22 +15,24 @@ const questions = [
     answer: "1. Chrome Developer Tools",
   },
   {
-    question: "Arrays in Javascript can be used to store?",
+    question: "Question 2",
     choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
     answer: "1. Other Arrays",
   },
   {
-    question: "Arrays in Javascript can be used to store?",
+    question: "Question 3",
     choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
     answer: "1. Other Arrays",
   },
   {
-    question: "Arrays in Javascript can be used to store?",
+    question: "Question 4",
     choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
     answer: "1. Other Arrays",
   },
 ];
 
+var correctAnswers=0;
+var wrongAnswers=0;
 var questionTitle = document.getElementById("questionTitle");
 var questionDiv = document.getElementById("questionDiv");
 var choiceA = document.getElementById("btn0");
@@ -84,17 +86,39 @@ function nextQuestion() {
   choiceB.textContent = questions[questionIndex].choices[1];
   choiceC.textContent = questions[questionIndex].choices[2];
   choiceD.textContent = questions[questionIndex].choices[3];
+
   
 }
 
+
+
+document.getElementById("btn0").addEventListener("click", checkAnswer);
+document.getElementById("btn1").addEventListener("click", checkAnswer);
+document.getElementById("btn2").addEventListener("click", checkAnswer);
+document.getElementById("btn3").addEventListener("click", checkAnswer);
+
+
+
+
 function checkAnswer(event) {
   if (event.target.textContent === questions[questionIndex].answer) {
+
+    correctAnswers++
+
+
+    
     //playerScore.textContent = ("Score: " + userScorePoints);
     console.log("correct answer");
+
   } else {
-    
+    console.log("wrong answer");
+    console.log(event.target.textContent + " "  + questions[questionIndex].answer)
+
+    wrongAnswers++
+  
   }
 
+  
   questionIndex++;
 
   // add another question
@@ -104,4 +128,10 @@ function checkAnswer(event) {
   } else {
     gameOver();
   }
+}
+
+function gameOver(){
+
+  
+  console.log("Game is over, you got this amount of correct answers: " + correctAnswers )
 }
