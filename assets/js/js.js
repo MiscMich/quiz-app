@@ -95,12 +95,12 @@ function checkAnswer(event) {
     
   }
 
-  questionCountIndex++;
+  questionIndex++;
 
   // add another question
-  if (questionCountIndex < shuffledQuestions.length) {
+  if (questionIndex < questions.length) {
     // questionCountIndex++;
-    showQuestion();
+    nextQuestion();
   } else {
     gameOver();
   }
