@@ -132,6 +132,7 @@ function checkAnswer(event) {
 
 function gameOver(){
 
-  
+  timeFull.style.display = "none"
+  questionsDiv.style.display = "none"
   console.log("Game is over, you got this amount of correct answers: " + correctAnswers )
 }
