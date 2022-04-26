@@ -71,6 +71,7 @@ function startGame() {
     if (totalTime <= 0) {
       clearInterval(startTimer);
       if (questionIndex < questions.length - 1) {
+        gameOver()
       }
     }
   }, 1000);
@@ -102,8 +103,12 @@ document.getElementById("btn3").addEventListener("click", checkAnswer);
 
 function checkAnswer(event) {
   if (event.target.textContent === questions[questionIndex].answer) {
-
+    
+    document.getElementById('right-or-wrong').classList.add("text-success")
+     
+    document.getElementById('right-or-wrong').innerHTML = "That answer was correct!"
     correctAnswers++
+    
 
 
     
@@ -111,9 +116,13 @@ function checkAnswer(event) {
     console.log("correct answer");
 
   } else {
+
+    totalTime = totalTime - 10;
+    document.getElementById('right-or-wrong').classList.add("text-danger")
+
     console.log("wrong answer");
     console.log(event.target.textContent + " "  + questions[questionIndex].answer)
-
+    document.getElementById('right-or-wrong').innerHTML = ("Wrong! The correct answer was: " + questions[questionIndex].answer + ".")
     wrongAnswers++
   
   }
@@ -135,4 +144,7 @@ function gameOver(){
   timeFull.style.display = "none"
   questionsDiv.style.display = "none"
   console.log("Game is over, you got this amount of correct answers: " + correctAnswers )
+  codingQuizHeading = "Game Over! "
+  
+
 }
