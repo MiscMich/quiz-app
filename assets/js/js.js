@@ -222,19 +222,19 @@ function viewHighscores() {
 
 
 
-function viewHighScores () {
+//function viewHighScores () {
   
   
-  totalTime = 1
-  document.getElementById('time').innerHTML = '0'
-  questionsDiv.style.display = "none"
+//  totalTime = 1
+ // document.getElementById('time').innerHTML = '0'
+ // questionsDiv.style.display = "none"
 
   
   
 
   
 
-}
+//}
 
 function refresh() {    
   setTimeout(function () {
@@ -242,7 +242,7 @@ function refresh() {
   }, 100);
 }
 
-document.getElementById("view-highscores").addEventListener("click", grabHighScore)
+//document.getElementById("view-highscores").addEventListener("click", grabHighScore)
 document.getElementById("play-again").addEventListener("click", refresh )
  document.getElementById("submit-initials").addEventListener('click', grabHighScore)
 
