@@ -30,6 +30,8 @@ const questions = [
   },
 ];
 
+//all global variables and arrays
+
 var scoresArray = [];
 var userInputDiv = document.getElementById("highscore-initial-input");
 var correctAnswers = 0;
@@ -50,6 +52,8 @@ var startDiv = document.getElementById("heading");
 
 startGameButton.addEventListener("click", startGame);
 
+
+//starts game with timer at 60 and displays questions
 function startGame() {
   totalTime = 60;
   questionsDiv.style.display = "block";
@@ -84,6 +88,8 @@ function showQuiz() {
   nextQuestion();
 }
 
+//shows questions depending on question index
+
 function nextQuestion() {
   questionTitle.textContent = questions[questionIndex].question;
   choiceA.textContent = questions[questionIndex].choices[0];
@@ -92,10 +98,14 @@ function nextQuestion() {
   choiceD.textContent = questions[questionIndex].choices[3];
 }
 
+//event listener function for all question buttons
+
 document.getElementById("btn0").addEventListener("click", checkAnswer);
 document.getElementById("btn1").addEventListener("click", checkAnswer);
 document.getElementById("btn2").addEventListener("click", checkAnswer);
 document.getElementById("btn3").addEventListener("click", checkAnswer);
+
+//check answer function which moves to next question on click
 
 function checkAnswer(event) {
   if (event.target.textContent === questions[questionIndex].answer) {
@@ -131,6 +141,8 @@ function checkAnswer(event) {
   }
 }
 
+
+//game over event which runs once timer hits 0 or all questions answered
 function gameOver(event) {
   totalTime = 1;
   document.getElementById("time").innerHTML = "0";
@@ -142,6 +154,9 @@ function gameOver(event) {
   codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers;
   userInputDiv.style.display = "block";
 }
+
+
+//grab highscore function which displays highscores at the end of the game
 
 function grabHighScore() {
   document.getElementById("heading").style.display = "none";
@@ -215,13 +230,9 @@ function viewHighscores() {
   questionsDiv.style.display = "none";
 }
 
-//function viewHighScores () {
 
-//  totalTime = 1
-// document.getElementById('time').innerHTML = '0'
-// questionsDiv.style.display = "none"
 
-//}
+//function to refresh page 
 
 function refresh() {
   setTimeout(function () {
@@ -229,8 +240,10 @@ function refresh() {
   }, 100);
 }
 
-//document.getElementById("view-highscores").addEventListener("click", grabHighScore)
+//play again button links to refresh page unction
 document.getElementById("play-again").addEventListener("click", refresh);
+
+//event listener for button to submit initials and lead to grab highscore function
 document
   .getElementById("submit-initials")
   .addEventListener("click", grabHighScore);
