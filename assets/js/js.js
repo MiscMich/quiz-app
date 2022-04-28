@@ -1,3 +1,5 @@
+//Coding questions for quiz
+
 const questions = [
   {
     question: "Arrays in Javascript can be used to store?",
@@ -5,36 +7,33 @@ const questions = [
     answer: "1. Other arrays",
   },
   {
-    question: "A very useful tool for planning and debugging your code is ____",
-    choices: [
-      "1. Chrome Developer Tools",
-      "2. Html",
-      "3. Arrays",
-      "4. Node.js",
-    ],
-    answer: "1. Chrome Developer Tools",
+    question: "Commonly used data types DO NOT include",
+    choices: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
+    answer: "3. Alerts",
   },
   {
-    question: "Question 2",
-    choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
-    answer: "1. Other Arrays",
+    question:
+      "A very useful tool used during development and debugging for printing content to the debugger is: ",
+    choices: ["1. Javascript", "2. Terminal/Bash", "3. for loops ", "4. console.log"],
+
+    answer: "4. console.log",
   },
   {
-    question: "Question 3",
-    choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
-    answer: "1. Other Arrays",
+    question: "The condition of an if/else statement is enclosed within ______.",
+    choices: ["1. Quotes", "2. Curly Brackets", "3. Parentheses", "4. Square Brackets"],
+    answer: "3. Parentheses",
   },
   {
-    question: "Question 4",
-    choices: ["1. Other arrays", "2. Html", "3. CSS", "4. Javascript"],
-    answer: "1. Other Arrays",
+    question: "String values must be enclosed within ______ when being assigned to variables.",
+    choices: ["1. Quotes", "2. Curly Brackets", "3. Commas", "4. Parentheses"],
+    answer: "1. Quotes",
   },
 ];
 
- var scoresArray = [];
-  var userInputDiv =  document.getElementById("highscore-initial-input")
-var correctAnswers=0;
-var wrongAnswers=0;
+var scoresArray = [];
+var userInputDiv = document.getElementById("highscore-initial-input");
+var correctAnswers = 0;
+var wrongAnswers = 0;
 var questionTitle = document.getElementById("questionTitle");
 var questionDiv = document.getElementById("questionDiv");
 var choiceA = document.getElementById("btn0");
@@ -72,12 +71,12 @@ function startGame() {
     time.textContent = totalTime;
     if (totalTime <= 0) {
       clearInterval(startTimer);
+      gameOver();
       if (questionIndex < questions.length - 1) {
         totalTime = 0; // clear
-        gameOver()
+        gameOver();
       }
     }
-     
   }, 1000);
 }
 
@@ -91,47 +90,36 @@ function nextQuestion() {
   choiceB.textContent = questions[questionIndex].choices[1];
   choiceC.textContent = questions[questionIndex].choices[2];
   choiceD.textContent = questions[questionIndex].choices[3];
-
-  
 }
-
-
 
 document.getElementById("btn0").addEventListener("click", checkAnswer);
 document.getElementById("btn1").addEventListener("click", checkAnswer);
 document.getElementById("btn2").addEventListener("click", checkAnswer);
 document.getElementById("btn3").addEventListener("click", checkAnswer);
 
-
-
-
 function checkAnswer(event) {
   if (event.target.textContent === questions[questionIndex].answer) {
-    
-    document.getElementById('right-or-wrong').classList.add("text-success")
-     
-    document.getElementById('right-or-wrong').innerHTML = "That answer was correct!"
-    correctAnswers++
-    
+    document.getElementById("right-or-wrong").classList.add("text-success");
 
+    document.getElementById("right-or-wrong").innerHTML =
+      "That answer was correct!";
+    correctAnswers++;
 
-    
     //playerScore.textContent = ("Score: " + userScorePoints);
     console.log("correct answer");
-
   } else {
-
     totalTime = totalTime - 10;
-    document.getElementById('right-or-wrong').classList.add("text-danger")
+    document.getElementById("right-or-wrong").classList.add("text-danger");
 
     console.log("wrong answer");
-    console.log(event.target.textContent + " "  + questions[questionIndex].answer)
-    document.getElementById('right-or-wrong').innerHTML = ("Wrong! The correct answer was: " + questions[questionIndex].answer + ".")
-    wrongAnswers++
-  
+    console.log(
+      event.target.textContent + " " + questions[questionIndex].answer
+    );
+    document.getElementById("right-or-wrong").innerHTML =
+      "Wrong! The correct answer was: " + questions[questionIndex].answer + ".";
+    wrongAnswers++;
   }
 
-  
   questionIndex++;
 
   // add another question
@@ -144,106 +132,105 @@ function checkAnswer(event) {
 }
 
 function gameOver(event) {
-
-  totalTime = 1
-  document.getElementById('time').innerHTML = '0'
-  questionsDiv.style.display = "none"
-  console.log("Game is over, you got this amount of correct answers: " + correctAnswers )
-  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers
-  userInputDiv.style.display = "block"
-  
-  
-
-  
-
+  totalTime = 1;
+  document.getElementById("time").innerHTML = "0";
+  questionsDiv.style.display = "none";
+  console.log(
+    "Game is over, you got this amount of correct answers: " + correctAnswers
+  );
+  codingQuizHeading.style.display = "block";
+  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers;
+  userInputDiv.style.display = "block";
 }
 
+function grabHighScore() {
+  document.getElementById("heading").style.display = "none";
 
+  var userInitials = document.getElementById("user-initials").value;
 
+  console.log("users value is: " + userInitials);
 
-function grabHighScore(){
-
-
-    document.getElementById('heading').style.display = "none"
-
- 
-
-  
-    var userInitials = document.getElementById('user-initials').value;
-    
-    console.log("users value is: " + userInitials);
-
-
-  userInputDiv.style.display = "none"
-  questionsDiv.style.display = "none"
-  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers
-  document.getElementById("highscores-user-list").style.display = "block"
+  userInputDiv.style.display = "none";
+  questionsDiv.style.display = "none";
+  codingQuizHeading.innerHTML = "Game Over! Your score is " + correctAnswers;
+  document.getElementById("highscores-user-list").style.display = "block";
   //var highscore = localStorage.getItem("highscore");
-  
 
-   var result = {
+  var result = {
     initials: userInitials,
-    score: correctAnswers
-  }
+    score: correctAnswers,
+  };
 
-  const savedScores = localStorage.getItem('highscore') || '[]' // get the score, or the initial value if empty
- 
+  const savedScores = localStorage.getItem("highscore") || "[]"; // get the score, or the initial value if empty
+
   const highscores = [...JSON.parse(savedScores), result] // add the result
-  .sort((a, b) => b.score- a.score) // sort descending
-  .slice(0, 10) // take highest 5
+    .sort((a, b) => b.score - a.score) // sort descending
+    .slice(0, 10); // take highest 5
 
-localStorage.setItem('highscore', JSON.stringify(highscores)) // store the scores
+  localStorage.setItem("highscore", JSON.stringify(highscores)); // store the scores
 
-console.log(highscores)
- 
-  
-  
-  console.log(scoresArray)
+  console.log(highscores);
+
+  console.log(scoresArray);
 
   for (let i = 0; i < highscores.length; i++) {
-    console.log(highscores[i])
-    var ul = document.getElementById("highscores-user-list")
+    console.log(highscores[i]);
+    var ul = document.getElementById("highscores-user-list");
     var li = document.createElement("li");
-    li.setAttribute("class", "list-group-item")
-     li.appendChild(document.createTextNode(highscores[i].initials + ".   Score: " +highscores[i].score))
-     ul.appendChild(li);
+    li.setAttribute("class", "list-group-item");
+    li.appendChild(
+      document.createTextNode(
+        highscores[i].initials + ".   Score: " + highscores[i].score
+      )
+    );
+    ul.appendChild(li);
   }
-  
-  
-
 }
 
+document
+  .getElementById("view-highscores")
+  .addEventListener("click", viewHighscores);
 
 function viewHighscores() {
- 
+  userInputDiv.style.display = "none";
+  questionsDiv.style.display = "none";
+  heading.style.display = "none";
+  startGameButton.style.display = "none";
 
+  for (let i = 0; i < highscores.length; i++) {
+    console.log(highscores[i]);
+    var ul = document.getElementById("highscores-user-list");
+    var li = document.createElement("li");
+    li.setAttribute("class", "list-group-item");
+    li.appendChild(
+      document.createTextNode(
+        highscores[i].initials + ".   Score: " + highscores[i].score
+      )
+    );
+    ul.appendChild(li);
+  }
 
+  document.getElementById("highscores-user-list").style.display = "block";
+  totalTime = 1;
+  questionsDiv.style.display = "none";
 }
 
-
-
 //function viewHighScores () {
-  
-  
+
 //  totalTime = 1
- // document.getElementById('time').innerHTML = '0'
- // questionsDiv.style.display = "none"
-
-  
-  
-
-  
+// document.getElementById('time').innerHTML = '0'
+// questionsDiv.style.display = "none"
 
 //}
 
-function refresh() {    
+function refresh() {
   setTimeout(function () {
-      location.reload()
+    location.reload();
   }, 100);
 }
 
 //document.getElementById("view-highscores").addEventListener("click", grabHighScore)
-document.getElementById("play-again").addEventListener("click", refresh )
- document.getElementById("submit-initials").addEventListener('click', grabHighScore)
-
-
+document.getElementById("play-again").addEventListener("click", refresh);
+document
+  .getElementById("submit-initials")
+  .addEventListener("click", grabHighScore);
