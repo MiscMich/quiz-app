@@ -43,3 +43,5 @@ Please make sure to update tests as appropriate.
 ## Previews
 
 ![alt-text](https://github.com/MiscMich/quiz-app/blob/main/preview-images/Screen%20Shot%202022-04-28%20at%2012.48.32%20PM.png?raw=true)
+![alt-text](https://github.com/MiscMich/quiz-app/blob/main/preview-images/Screen%20Shot%202022-04-28%20at%2012.48.54%20PM.png?raw=true)
+
